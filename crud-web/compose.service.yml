@@ -1,0 +1,20 @@
+name: self-local-environment
+
+networks:
+  default:
+    name: local-network
+
+services:
+  crud-web:
+    container_name: local-crud-web
+    restart: always
+    build:
+      dockerfile: Dockerfile.local
+      context: .
+      args:
+        BUILD_ENV: localhost
+        TLS_FROM_NGINX: false
+    volumes:
+      - ./src:/app/src
+    ports:
+      - 40001:40001
