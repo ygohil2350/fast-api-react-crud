@@ -1,0 +1,6 @@
+name: self-local-environment
+
+include:
+  - database/docker-compose.yml  
+  - crud-api/compose.service.yml
+  - crud-web/compose.service.yml

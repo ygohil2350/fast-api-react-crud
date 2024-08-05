@@ -14,7 +14,5 @@ services:
       args:
         BUILD_ENV: localhost
         TLS_FROM_NGINX: false
-    volumes:
-      - ./src:/app/src
     ports:
-      - 40001:40001
+      - 4001:4001

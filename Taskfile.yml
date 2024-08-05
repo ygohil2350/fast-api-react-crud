@@ -1,0 +1,24 @@
+version: "3"
+
+env:
+  COMPOSE_PARALLEL_LIMIT: 2
+  COMPOSE_IGNORE_ORPHANS: true
+dotenv:
+  - .env
+
+vars:
+  API_SERVICES: crud-api
+  WEB_SERVICES: crud-web
+
+tasks:
+  up:
+    desc: Seed all databases
+    prompt: This will seed (or re-seed) all of the databases... Do you want to continue?
+    vars:
+      SAMPLE_LOAD: true
+    cmds:
+      - docker compose -f compose.services.yml up -d --build --wait
+  down:
+    desc: Stop all services
+    cmds:
+      - docker compose -f compose.services.yml down
