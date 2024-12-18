@@ -17,7 +17,7 @@ app.include_router(router, prefix="/personal", tags=["personal"])
 async def root():
     return {
         "message": "healthCheck Done at {}".format(
-            datetime.now(datetime.UTC).strftime("%B %d %Y - %H:%M:%S")
+            datetime.utcnow().strftime("%B %d %Y - %H:%M:%S")
         )
     }
 
@@ -25,4 +25,4 @@ async def root():
 # Launch for local development
 if __name__ == "__main__":
     logger.info("Listening on 0.0.0.0:8001")
-    uvicorn.run("main:app", host="127.0.0.1", port=8001, reload=True)
+    uvicorn.run("main:app", host="127.0.0.1", port=4000, reload=True)
