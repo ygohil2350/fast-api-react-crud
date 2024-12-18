@@ -9,10 +9,21 @@ services:
     container_name: local-crud-web
     restart: always
     build:
-      dockerfile: Dockerfile.local
+      dockerfile: .Dockerfile
       context: .
-      args:
-        BUILD_ENV: localhost
-        TLS_FROM_NGINX: false
+    volumes:
+      - ./src:/app/src
     ports:
-      - 4001:4001
+      - 5173:5173
+    labels:
+      traefik.enable: "true"
+      traefik.frontend.passHostHeader: "true"
+      traefik.http.middlewares.crud-web-cors.headers.accesscontrolallowcredentials: "true"
+      traefik.http.middlewares.crud-web-cors.headers.accesscontrolallowheaders: "*"
+      traefik.http.middlewares.crud-web-cors.headers.accesscontrolallowmethods: "*"
+      traefik.http.middlewares.crud-web-cors.headers.accesscontrolalloworiginlist: "*"
+      traefik.http.routers.crud-web-main.entrypoints: web
+      traefik.http.routers.crud-web-main.middlewares: crud-web-cors
+      traefik.http.routers.crud-web-main.rule: PathPrefix(`/`) && Host(`self.localhost`)
+      traefik.http.services.crud-web-service.loadBalancer.server.scheme: http
+      traefik.http.services.crud-web-service.loadBalancer.serversTransport: default@internal

@@ -1,0 +1,15 @@
+name: self-local-environment
+version: "3.8"
+
+services:
+  crud-api:
+    container_name: local-crud-api
+    build:
+      dockerfile: .Dockerfile
+      context: .
+    env_file:
+      - ../database/.env
+    volumes:
+      - ./app:/app
+    ports:
+      - "8000:8000"

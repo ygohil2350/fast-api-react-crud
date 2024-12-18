@@ -3,8 +3,19 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
+  "packageManager": "pnpm@9.1.4",
+  "engines": {
+    "node": "20.14.0",
+    "pnpm": "9.1.4"
+  },
+  "browserslist": [
+    "firefox >= 115",
+    "chrome >= 109",
+    "safari >= 16",
+    "edge >= 124"
+  ],
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "check": "pnpm run lint && pnpm run type",

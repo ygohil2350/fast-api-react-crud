@@ -1,0 +1,26 @@
+# Dependencies
+requirements.txt
+target/*
+__pycache__/*
+.venv/
+
+# Local Editor Config
+.idea/*
+.idea
+.DS_Store
+
+# Secrets
+.env
+*.pem
+
+# Build artifacts
+*.pyc
+*.log
+*.zip
+*.pyc
+debug_output/
+.coverage
+.ruff_cache/
+.pytest_cache/
+__pycache__/
+alembic_upgrade.info

@@ -12,8 +12,7 @@ vars:
 
 tasks:
   up:
-    desc: Seed all databases
-    prompt: This will seed (or re-seed) all of the databases... Do you want to continue?
+    desc: Seed all database
     vars:
       SAMPLE_LOAD: true
     cmds:
